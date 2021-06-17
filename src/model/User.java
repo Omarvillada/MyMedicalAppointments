@@ -1,23 +1,23 @@
-public class Patient {
+package model;
+
+public abstract class User {
+    private static int id = 0; //Autoincrement
     private String name;
     private String email;
     private String address;
     private String phoneNumber;
-    private String birthday;
-    private double weight;
-    private double height;
-    private String blood;
 
-    public  Patient(String name, String email){
+    public User(String name, String email) {
         this.name = name;
         this.email = email;
     }
-    public void setWeight(double weight){
-        this.weight = weight;
+
+    public static int getId() {
+        return id;
     }
 
-    public String getWeight() {
-        return this.weight + " Kg.";
+    public static void setId(int id) {
+        User.id = id;
     }
 
     public String getName() {
@@ -52,30 +52,14 @@ public class Patient {
         if (phoneNumber.length() > 8){
             System.out.println("El numero telefonico debe ser mayor a 8 digitos.");
         }else if (phoneNumber.length() == 8)
-        this.phoneNumber = phoneNumber;
+            this.phoneNumber = phoneNumber;
+    }
+//Sobreescritura
+    @Override
+    public String toString() {
+        return "model.User: " + name + ", Email: " + email +
+                "\nAddress: " + address + ". Phone: " + phoneNumber;
     }
 
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
-    public String getHeight() {
-        return height + " Mts.";
-    }
-
-    public void setHeight(double height) {
-        this.height = height;
-    }
-
-    public String getBlood() {
-        return blood;
-    }
-
-    public void setBlood(String blood) {
-        this.blood = blood;
-    }
+    public abstract void showDataUser();
 }
